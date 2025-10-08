@@ -52,19 +52,6 @@ Write a `class NewsProcessor`:
   - Add an optional argument `filter` to the `to_df` method, which, if passed a `function`, uses that function to filter the rows in the dataframe. It should only include rows for which the `function` returns `True`.
 - Add a method `plot_word_popularity` which takes a `list[Article]` and a `str` search term as arguments. It should make and display a plot of the frequency of that search term in the articles' titles. The x axis should be the range of dates covered by the articles, and the y axis should be the number of articles published with the search term on that day.
 
-## Ethics and Privacy
+## Wrap-up
 
-Please fill out this table about API keys used in code. (Some parts are already answered for you, and you may look at Lab 1 for help):
-
-| Question | Answer |
-| -------- | ------ |
-| What type of information is shared? | API key |
-| Who is the subject of the information? | The programmer / code that's making API calls |
-| Who is the sender of the information? | The programmer |
-| Who are the potential recipients of the information? | Intended recipient: the API server<br />Unintended recipient(s): YOUR ANSWER HERE |
-| What principles govern the collection and transmission of the information? | YOUR ANSWER HERE |
-
-You may go back and edit your answers in the table as you answer these questions:
-1. As we saw in Lab 5, large language models (LLMs) are trained on large parts of the internet. Are any popular LLMs trained on open source code like GitHub?
-2. If a programmer accidentally pushes their API key to GitHub, who are at least two potential unintended recipients of this data?
-3. How might we design our code to minimize the number of unintended recipients of that information? How might we redesign APIs to minimize the number of unintended recipients?
+Please make sure to answer the questions in `Summary.md`.
