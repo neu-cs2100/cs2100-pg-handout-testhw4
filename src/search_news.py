@@ -1,6 +1,7 @@
 import requests
-from typing import Optional, List
-from article import Article
+from typing import Optional, List, Dict, Any
+from src.article import Article
+import os
 
 
 class SearchNews:
@@ -15,17 +16,9 @@ class SearchNews:
         Args:
             api_key_file: Path to file containing the API key
         """
-        # TODO: Read API key from file and store as attribute
-        # Remember to handle file reading errors appropriately
         pass
 
-    def get_top_headlines(
-        self,
-        date: Optional[str] = None,
-        domain: Optional[str] = None,
-        language: Optional[str] = None,
-        *terms
-    ) -> List[Article]:
+    def get_top_headlines(self, *terms: str) -> List[Article]:
         """
         Get top headlines from the News API.
 
@@ -40,16 +33,16 @@ class SearchNews:
         """
         # TODO: Implement API call to /top-headlines endpoint
         # Base URL: https://newsapi.org/v2/top-headlines
-        # Remember to include your API key in the request headers
+        # Remember to include your API key in the request parameters
         # Parse JSON response and create Article objects
         pass
 
     def get_everything(
         self,
         date: Optional[str] = None,
-        domain: Optional[str] = None,
+        domains: Optional[List[str]] = None,
         language: Optional[str] = None,
-        *terms
+        *terms: str
     ) -> List[Article]:
         """
         Get everything from the News API.
@@ -65,11 +58,11 @@ class SearchNews:
         """
         # TODO: Implement API call to /everything endpoint
         # Base URL: https://newsapi.org/v2/everything
-        # Remember to include your API key in the request headers
+        # Remember to include your API key in the request parameters
         # Parse JSON response and create Article objects
         pass
 
-    def _make_request(self, endpoint: str, params: dict) -> dict:
+    def _make_request(self, endpoint: str, params: Dict[str, str]) -> Any:
         """
         Helper method to make API requests.
 
@@ -78,13 +71,14 @@ class SearchNews:
             params: Query parameters for the request
 
         Returns:
-            JSON response as dictionary
+            Dictionary of JSON response
         """
         # TODO: Implement helper method for making API requests
         # This can reduce code duplication between get_top_headlines and get_everything
         pass
+        
 
-    def _create_articles_from_response(self, response_data: dict) -> List[Article]:
+    def _create_articles_from_response(self, response_data: Dict[str, Any]) -> List[Article]:
         """
         Helper method to create Article objects from API response.
 
@@ -96,6 +90,3 @@ class SearchNews:
         """
         # TODO: Parse the 'articles' field from response and create Article objects
         pass
-
-
-ﬁ

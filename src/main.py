@@ -6,22 +6,24 @@ Before running this code:
 2. Make sure to not push it to Github!
 """
 
-from search_news import SearchNews
-from news_processor import NewsProcessor
 from datetime import datetime, timedelta
+import sys
+sys.path.append('.')  # To allow imports from src
+from src.search_news import SearchNews
+from src.news_processor import NewsProcessor
 
 
-def main():
+def main() -> None:
     # Initialize the news searcher
     # Make sure you have your API key in 'api_key.txt'
-    searcher = SearchNews()
+    searcher = SearchNews('key.txt')
     
     # Initialize the processor
     processor = NewsProcessor()
     
     # Example 1: Get top headlines
     print("Getting top headlines...")
-    headlines = searcher.get_top_headlines(language="en", "technology")
+    headlines = searcher.get_top_headlines("technology")
     print(f"Found {len(headlines)} headlines")
     
     # Example 2: Convert to DataFrame
@@ -41,9 +43,10 @@ def main():
     print("\nSorting by publication date...")
     df_sorted = processor.to_df(
         headlines,
-        sort_by=lambda article: article.publishedAt or ""
+        sort_by=lambda article: article.published_at
     )
     print("Sorted DataFrame created")
+    print(df_sorted.head())
     
     # Example 5: Plot word popularity
     print("\nPlotting word popularity...")
@@ -52,11 +55,7 @@ def main():
     # Example 6: Search everything for a specific term
     print("\nSearching everything for 'climate change'...")
     yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
-    climate_articles = searcher.get_everything(
-        date=yesterday,
-        language="en",
-        "climate change"
-    )
+    climate_articles = searcher.get_everything(yesterday, None, 'en', "climate change")
     print(f"Found {len(climate_articles)} articles about climate change")
 
 

@@ -1,9 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from typing import List, Callable, Optional
-from collections import Counter
-from datetime import datetime
-from article import Article
+from typing import List, Dict, Callable, Optional, Any
+import datetime
+from src.article import Article
 
 
 class NewsProcessor:
@@ -12,15 +11,16 @@ class NewsProcessor:
     """
 
     def to_df(self, articles: List[Article],
-              sort_by: Optional[Callable] = None,
-              filter_func: Optional[Callable] = None) -> pd.DataFrame:
+              sort_by: Optional[Callable[[Article], Any]] = None,
+              filter_func: Optional[Callable[[Article], bool]] = None
+    ) -> pd.DataFrame:
         """
         Convert list of Article objects to a Pandas DataFrame.
 
         Args:
             articles: List of Article objects
             sort_by: Optional function to sort rows by
-            filter_func: Optional function to filter rows (keeps rows where function returns True)
+            filter_func: Optional function to filter rows (include rows where function returns True)
 
         Returns:
             Pandas DataFrame with articles data
@@ -32,10 +32,9 @@ class NewsProcessor:
         # TODO: Apply filtering if filter_func is provided
 
         # TODO: Apply sorting if sort_by is provided
-
         pass
 
-    def plot_word_popularity(self, articles: List[Article], search_term: str):
+    def plot_word_popularity(self, articles: List[Article], search_term: str) -> None:
         """
         Plot the frequency of a search term in article titles over time.
 
@@ -50,20 +49,20 @@ class NewsProcessor:
         # 4. Display the plot
 
         # Hints:
-        # - You may need to parse the publishedAt dates
+        # - You may need to parse the published_at dates
         # - Consider using case-insensitive search
         # - matplotlib.pyplot can be used for plotting
         pass
 
-    def _extract_date_from_published(self, published_at: str) -> str:
+    def _extract_date_from_published_at(self, published_at: Optional[str]) -> Optional[datetime.date]:
         """
         Helper method to extract date from publishedAt timestamp.
 
         Args:
-            published_at: ISO format timestamp string
+            published_at: ISO format timestamp string (e.g., '2023-10-01T12:34:56Z')
 
         Returns:
-            Date string in YYYY-MM-DD format
+            Date string in YYYY-MM-DD format, or None if input is None
         """
         # TODO: Parse ISO timestamp and return just the date part
         pass
