@@ -39,7 +39,7 @@ It should appropriately store these strings as either attributes or properties:
 
 For each one, it is up to you whether you make it an attribute or a property.
 
-Don't forget to create a test class in teh `tests` directory to test your work.
+Don't forget to create a test class in the `tests` directory to test your work.
 
 ### 3: SearchNews
 
@@ -58,7 +58,7 @@ To avoid pushing it to GitHub, you can either:
 - always `git add` all files except the file that contains the key
 - add the file that contains the key to a `.gitignore` file, so that it never gets `git add`ed
 
-Don't forget to create a test class in teh `tests` directory to test your work.
+Don't forget to create a test class in the `tests` directory to test your work.
 
 ### 4: NewsProcessor
 
@@ -68,7 +68,7 @@ To make the `Article`s easier to read, implement the `class NewsProcessor`:
   - The optional argument `filter`, if passed a `function`, uses that function to filter the rows in the dataframe. It should only include rows for which the `function` returns `True`.
 - Implement the method `plot_word_popularity()` which takes a `list[Article]` and a `str` search term as arguments. It should make and display a plot of the frequency of that search term in the articles' titles. The x axis should be the range of dates covered by the articles, and the y axis should be the number of articles published with the search term on that day.
 
-Don't forget to create a test class in teh `tests` directory to test your work.
+Don't forget to create a test class in the `tests` directory to test your work.
 
 ## Wrap-up
 
